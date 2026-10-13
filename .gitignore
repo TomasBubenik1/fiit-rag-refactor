@@ -1,0 +1,29 @@
+.venv/
+__pycache__/
+.cache/
+
+# Supplied corpus, generated documents, indexes, logs and model artifacts.
+/data/
+*.py[cod]
+*.log
+
+# Local configuration and credentials.
+.env
+.env.*
+!.env.example
+.vscode/
+.idea/
+
+# Build and test output.
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# OS metadata.
+.DS_Store
+Thumbs.db
