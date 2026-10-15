@@ -1,8 +1,28 @@
-# Plán experimentov pre FIIT RAG
+# Plán experimentov pre konverzačný RAG
 
-Pracovný návrh z 15. 10. 2026. Dokument zhŕňa modely, retrieval metódy a ostatné nastavenia, ktoré budeme porovnávať na slovenskom korpuse FIIT STU. Je to plán meraní; neobsahuje namerané výsledky ani tvrdenie, že navrhnuté varianty už fungujú.
+Pracovný návrh z 15. 10. 2026. Dokument zhŕňa modely, retrieval metódy a ostatné nastavenia; slovenský korpus FIIT STU tvorí prvú prípadovú štúdiu. Celé zadanie smeruje ku konverzačnému RAG pre byrokratické inštitúcie, nie iba k vyhľadávaniu na webe FIIT. Záväzný rámec a pôvodné znenie sú v [rozsahu práce](project_scope.md). Je to plán meraní; neobsahuje namerané výsledky ani tvrdenie, že navrhnuté varianty už fungujú.
 
 **Jadro** označuje hlavné plánované porovnania. **Rozšírenie** zaradíme podľa času, dostupného hardvéru a chýb zistených v jadre. Nebudeme skúšať kartézsky súčin všetkých modelov a nastavení: najprv porovnáme jednotlivé časti, potom zostavíme a overíme výslednú konfiguráciu.
+
+## 0. Rozsah celého systému
+
+Existujúce experimenty E00–E09 zostávajú technickým jadrom. Súbežné úlohy
+rozširujú návrh a hodnotenie podľa zadania:
+
+| Úloha | Povinný výstup |
+| --- | --- |
+| S00 | Analýza RAG/agentic RAG, databáz/vektorových databáz a významu „MPC versus RPC“; zdôvodnená architektúra. |
+| S01 | Adaptéry korpusov a metadáta inštitúcie, nadradenej organizácie, pôsobnosti a platnosti; FIIT → STU ako prvý príklad. |
+| S02 | Verejné dialógové datasety, overené verzie/splity, mapovanie dôkazov a metriky mimo lokálneho FIIT benchmarku. |
+| S05 | Implementácia vybraných úložísk a rozhraní; ďalšie backendy/protokoly len podľa návrhu alebo konkrétneho experimentu. |
+| S03 | Funkčná konverzačná aplikácia s históriou, nadväzujúcimi otázkami, citáciami a upresňovaním. |
+| S04 | Realistické byrokratické postupy a otázky naprieč úrovňami FIIT/STU vrátane pôsobnosti, výnimiek a rozporov. |
+
+Pred uzamknutím konfigurácie v E08 musia byť pripravené verejné hodnotenie,
+konverzačný tok a inštitucionálne scenáre. E09 vykáže ich výsledky oddelene
+od lokálneho FIIT retrievalu. Generovanie a konverzácia patria do požadovaného
+výsledku. Analýza agentic RAG je povinná; implementácia agentného variantu nie
+je automaticky povinná. Význam skratky MPC treba potvrdiť, nie potichu zmeniť.
 
 ## 1. Z čoho vychádzame
 
@@ -266,4 +286,4 @@ Pre každý beh navrhujeme samostatný priečinok `output/experiments/<run_id>/`
 | `metrics.json` | Súhrnné metriky, rozpis podľa skupín a jednotlivých otázok. |
 | `errors.md` | Konkrétne zlyhania: extrakcia, chunkovanie, nesprávny rok, retrieval, reranking, generovanie alebo referencia. |
 
-Ide o navrhované artefakty budúceho runnera, nie o súbory, ktoré už aktuálne príkazy automaticky vytvárajú. Minimálny hotový výsledok experimentálnej časti bude reprodukovateľné porovnanie modelov a retrievalu, finálna konfigurácia s abláciami a samostatné hodnotenie odpovedí. Fine-tuning, GraphRAG a autonómne agentné vyhľadávanie zatiaľ nechávame mimo jadra; zaradíme ich až pri konkrétnej potrebe a pripravených dátach.
+Ide o navrhované artefakty budúceho runnera, nie o súbory, ktoré už aktuálne príkazy automaticky vytvárajú. Hotový výsledok zahŕňa vlastný konverzačný RAG, reprodukovateľné porovnanie modelov a retrievalu, finálnu konfiguráciu s abláciami a hodnotenie odpovedí aj dialógov na verejných datasetoch a realistických scenároch. Analýza agentic RAG patrí do S00. Fine-tuning, GraphRAG, ďalšie backendy a agentný prototyp sú rozšírenia podľa návrhu, zistených chýb a dostupných zdrojov.

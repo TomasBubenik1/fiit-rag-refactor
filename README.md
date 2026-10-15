@@ -1,4 +1,13 @@
-# FIIT STU document retrieval
+# Conversational RAG for bureaucratic institutions
+
+The thesis targets a reusable conversational RAG system for institutional
+information and procedures. FIIT STU is the initial corpus and case study;
+FIIT → STU is the first planned hierarchy scenario. The full assignment also
+requires architecture analysis, public-dataset evaluation, and realistic
+conversations. See the [assignment and scope](docs/project_scope.md) and
+[planning checklist](docs/project_checklist.md).
+
+## Current implementation
 
 Local tools for cleaning the supplied FIIT STU website/PDF corpus, preserving
 source references, chunking documents and searching with Qwen3 embeddings.

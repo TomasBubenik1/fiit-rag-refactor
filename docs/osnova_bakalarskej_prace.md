@@ -1,20 +1,20 @@
-# Osnova bakalárskej práce o vyhľadávaní v dokumentoch FIIT
+# Osnova bakalárskej práce o konverzačnom RAG pre byrokratické inštitúcie
 
 Sprievodca písaním kapitol a prípravou experimentov
 
-Tvoja práca môže sledovať jednu konkrétnu otázku: ako pripraviť rôznorodé dokumenty fakulty tak, aby systém dokázal k študentskej otázke nájsť správny podklad a ukázať jeho zdroj. Každá kapitola potom vysvetlí jednu časť riešenia, jej dôvody a spôsob overenia.
+Práca rieši návrh, implementáciu a vyhodnotenie vlastného konverzačného RAG pre byrokratické inštitúcie. FIIT je prvý korpus; vzťah FIIT → STU poskytuje prvý scenár práce s viacerými organizačnými úrovňami. Každá kapitola vysvetlí časť riešenia, jej dôvody a overenie. Pôvodné zadanie a požadované výstupy zachytáva [rozsah práce](project_scope.md).
 
 ## Zameranie a hlavná myšlienka práce
 
-**Pracovný návrh názvu:** Vyhľadávanie informácií v dokumentoch FIIT STU pomocou jazykových modelov.
+**Pracovný návrh názvu:** Konverzačný systém pre byrokratické inštitúcie s využitím Retrieval-Augmented Generation.
 
-Ak bude výsledkom aj generovanie odpovedí, môžeš použiť presnejší názov: **Systém na odpovedanie na otázky o štúdiu na FIIT STU s využitím RAG**. RAG znamená Retrieval Augmented Generation, teda generovanie odpovede s využitím vyhľadaných podkladov [1].
+Generovanie podložených odpovedí a konverzácia sú súčasťou zadania. RAG znamená Retrieval Augmented Generation, teda generovanie odpovede s využitím vyhľadaných podkladov [1]. FIIT/STU uvádzaj ako prípadovú štúdiu, nie ako jediný cieľ systému.
 
-**Návrh cieľa do úvodu:** Cieľom práce je navrhnúť, implementovať a vyhodnotiť postup spracovania fakultných dokumentov a vyhľadávania relevantných informácií pre otázky študentov. Riešenie sa zameriava na zachovanie štruktúry dokumentov, dohľadateľnosť zdrojov a rozlíšenie informácií podľa obdobia ich platnosti.
+**Návrh cieľa do úvodu:** Cieľom práce je analyzovať prístupy a nástroje RAG, navrhnúť a implementovať vlastný konverzačný systém pre inštitucionálne informácie a postupy a vyhodnotiť ho na verejných datasetoch a realistických scenároch. Návrh zohľadní pôsobnosť dokumentov, organizačné vzťahy, časovú platnosť, citácie a nadväzujúce otázky.
 
-Ak doplníš generovanie, pridaj samostatný cieľ: vytvárať odpovede podložené nájdenými úryvkami a overiť ich vecnú správnosť aj správnosť citácií. Samotné vektorové vyhľadávanie tvorí vyhľadávaciu časť RAG; celý systém potrebuje aj generovanie odpovede.
+Samostatne over vecnú správnosť odpovedí, oporu tvrdení v zdrojoch, správnosť citácií a konverzačné správanie. Samotné vektorové vyhľadávanie tvorí iba jednu časť požadovaného systému.
 
-**Možný vlastný prínos:** overený postup prípravy slovenských fakultných dokumentov, zachovanie tabuliek a zdrojových údajov pri delení textu a experimentálne porovnanie zvolených variantov vyhľadávania. Prínos presne pomenuj až podľa uskutočnených experimentov.
+**Možný vlastný prínos:** prenositeľná konverzačná architektúra s adaptérmi korpusov, zachovaním dôkazov a prácou s pôsobnosťou inštitucionálnych pravidiel; overenie na FIIT → STU a verejných dialógových datasetoch. Prínos presne pomenuj až podľa skutočnej implementácie a experimentov.
 
 ## Prehľad navrhovanej osnovy
 
@@ -45,7 +45,7 @@ Všeobecné tvrdenia o správaní študentov podlož zdrojom alebo vlastným pri
 
 ### Cieľ práce a čiastkové ciele
 
-Rozdeľ cieľ na overiteľné kroky: analyzovať korpus, pripraviť jednotnú reprezentáciu dokumentov, navrhnúť delenie textu, vytvoriť vyhľadávanie a vyhodnotiť ho na otázkach. Ak robíš chatbota, pridaj tvorbu odpovedí so zdrojmi a ich samostatné hodnotenie.
+Rozdeľ cieľ na overiteľné kroky: analýza architektúr a nástrojov, adaptéry a metadáta korpusov, delenie textu, retrieval, generovanie so zdrojmi, konverzačný tok a samostatné verejné i realistické hodnotenie. Ku každej časti priraď merateľný výstup.
 
 ### Výskumné otázky a štruktúra práce
 
@@ -60,6 +60,11 @@ Potom jedným krátkym odsekom predstav usporiadanie kapitol. Úvod môžeš za�
 ## 2 Teoretické východiská a súvisiace práce
 
 **Úloha kapitoly:** vysvetliť pojmy potrebné na pochopenie tvojich rozhodnutí. Každú časť prepoj s tým, kde ju využiješ v návrhu. Základný odborný rámec nájdeš v zdrojoch [1] až [5].
+
+Povinne zahrň porovnanie RAG a agentic RAG, konvenčných databáz a vektorových
+databáz a integračných prístupov podľa spresneného významu „MPC versus RPC“.
+Vysvetli rozdiel medzi analyzovanou alternatívou a súčasťou vlastnej implementácie.
+Ak vedúci potvrdí MCP, rozlíš jeho účel od RPC vrstvy, ktorú používa.
 
 ### Jazykové modely a odpovedanie na otázky
 
@@ -105,7 +110,7 @@ Rozober duplicity, historické vydania, viacstĺpcové dokumenty, zlúčené bun
 
 ### Požiadavky na riešenie
 
-Odvoď požiadavky z konkrétnych problémov: zachovať URL a číslo strany, udržať súvislosti v tabuľke, evidovať dostupné časové údaje a oddeliť obsah vyžadujúci kontrolu. Doplň reprodukovateľnosť spracovania a primeranú odozvu. Ak bude súčasťou generovanie, stanov správanie pri chýbajúcom alebo rozpornom podklade.
+Odvoď požiadavky z konkrétnych problémov: zdrojové URL/strany, tabuľky, pôsobnosť a platnosť pravidiel, organizačná hierarchia a kvalita extrakcie. Doplň reprodukovateľnosť, odozvu, históriu dialógu, nadväzujúce otázky a správanie pri chýbajúcom alebo rozpornom podklade.
 
 **Čo si pripraviť:** tabuľku zloženia korpusu a tri ukážky problémového vstupu spolu s požadovaným výstupom.
 
@@ -115,7 +120,7 @@ Odvoď požiadavky z konkrétnych problémov: zachovať URL a číslo strany, ud
 
 ### Architektúra a tok dát
 
-Navrhni dve vetvy. Príprava dát vedie od pôvodného dokumentu cez extrakciu a normalizáciu k úryvkom a indexu. Spracovanie otázky vedie od otázky cez jej reprezentáciu k vyhľadaniu relevantných úryvkov. Pri celom RAG doplň zostavenie kontextu a generovanie odpovede.
+Navrhni dve vetvy. Príprava dát vedie cez korpusový adaptér, extrakciu a normalizáciu k úryvkom, metadátam a indexu. Konverzačná vetva spracuje otázku a históriu, vyberie inštitucionálny a časový kontext, vyhľadá podklady a vytvorí odpoveď s citáciami alebo vyžiada upresnenie. Zdôvodni úložiská a rozhrania.
 
 ### Jednotná reprezentácia a dohľadateľnosť zdrojov
 
@@ -129,7 +134,7 @@ Zdôvodni zachovanie obsahových blokov a samostatnú kontrolu tokenového rozpo
 
 Opíš výber top k úryvkov a prácu s metadátami. Rozlišuj podobnosť otázky s textom od splnenia podmienky akademického roka. Ak navrhneš filter, urči aj postup pri chýbajúcom roku, viacerých rokoch v dokumente a otázke bez časového určenia. Implementované a iba navrhované správanie od seba oddeľ.
 
-### Generovanie odpovede pri rozšírení na celý RAG
+### Generovanie odpovede a konverzačný kontext
 
 Stanov formát kontextu, citácií a odpovede pri nedostatku informácií. Dokumenty odovzdávané modelu považuj za podklady; navrhni, ako zabrániš tomu, aby ich prípadné vložené pokyny menili pravidlá asistenta. Túto podkapitolu ponechaj iba v rozsahu skutočne navrhnutej alebo realizovanej časti práce.
 
@@ -169,7 +174,7 @@ Súbory sú oporou pri písaní. Hlavný text organizuj podľa riešených probl
 
 ## 6 Experimenty a vyhodnotenie
 
-**Úloha kapitoly:** odpovedať na výskumné otázky meraním. Oddeľ hodnotenie extrakcie, vyhľadávania a prípadného generovania.
+**Úloha kapitoly:** odpovedať na výskumné otázky meraním. Oddeľ extrakciu, retrieval, podložené odpovede a konverzačné správanie. Verejné datasety a realistické inštitucionálne scenáre sú požadovanou súčasťou hodnotenia.
 
 ### Testovacia množina a referenčné odpovede
 
@@ -198,7 +203,7 @@ Na začiatok stačí Hit Rate pri k rovných 1, 5 a 10: pri akom podiele otázok
 
 Zmeraj čas spracovania otázky a prípadne čas vytvorenia indexu, jeho veľkosť a využitie pamäte. Oddeľ prvé načítanie modelu od opakovaných otázok a uveď hardvér. Pri čase spracovania korpusu rozlíš nový beh a beh využívajúci uložené medzivýsledky.
 
-Ak generuješ odpovede, hodnotiť treba aj vecnú správnosť, oporu tvrdení v zdrojoch, správnosť citácií a správanie pri otázkach bez odpovede. Dobré vyhľadávacie skóre tieto vlastnosti automaticky nepotvrdzuje.
+Hodnoť vecnú správnosť, oporu tvrdení, citácie, otázky bez odpovede, výber inštitúcie/obdobia a nadväzujúce otázky. Dobré retrieval skóre tieto vlastnosti automaticky nepotvrdzuje. FIIT benchmark, verejné dialógové datasety a FIIT → STU scenáre vykazuj oddelene.
 
 ### Výsledky a rozbor chýb
 
