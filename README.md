@@ -7,6 +7,12 @@ requires architecture analysis, public-dataset evaluation, and realistic
 conversations. See the [assignment and scope](docs/project_scope.md) and
 [planning checklist](docs/project_checklist.md).
 
+Experiment work starts at the [experiment notebook](experiments/README.md).
+It keeps a small evidence index, reproducible run records, findings, and a thesis
+claim map. The repository skill
+[`experiment-records`](.agents/skills/experiment-records/SKILL.md) follows this
+workflow; invoke it with `$experiment-records` when working on experiments.
+
 ## Current implementation
 
 Local tools for cleaning the supplied FIIT STU website/PDF corpus, preserving

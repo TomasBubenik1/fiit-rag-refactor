@@ -274,6 +274,14 @@ Pre 4B/8B a väčšie modely zvážime podporovanú kvantizáciu, CPU offload al
 
 Latenciu porovnávame na rovnakom hardvéri, s oddeleným načítaním modelu a zahriatymi opakovanými otázkami. Výsledky z iných zariadení vykážeme oddelene. Pri kvantizovaných generátoroch uvedieme presný formát a revíziu súboru; rozdiel modelov s odlišnou kvantizáciou nebudeme vysvetľovať iba architektúrou. Latenciu meriame v režime zodpovedajúcom reálnej otázke, nie len veľkej dávke benchmarku.
 
+Pravidlá evidencie, šablóny a prepojenie zistení na tvrdenia v práci sú v
+[experimentálnom zápisníku](../experiments/README.md) a jeho
+[pracovnom postupe](../experiments/WORKFLOW.md). Do Gitu patria stručné plány,
+zistenia a malé reprodukčné balíky v `experiments/`; úplné výstupy zostávajú
+v ignorovanom `output/experiments/` s overenou záložnou kópiou. Ignorovanie
+v Gite samo osebe nie je zálohovanie. Súhrny metrík v Gite musia odkazovať na
+konkrétny beh a zachovať pôvod a spôsob prípadného výberu z úplného výstupu.
+
 Pre každý beh navrhujeme samostatný priečinok `output/experiments/<run_id>/` s týmito artefaktmi:
 
 | Súbor | Čo uložíme |
