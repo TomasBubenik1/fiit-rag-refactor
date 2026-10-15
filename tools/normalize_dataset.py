@@ -237,11 +237,58 @@ def parse_supporting(item, output):
     return record
 
 
+def group_web_sources(sources):
+    """Group byte-identical HTML before normalization, retaining original aliases."""
+    groups = defaultdict(list)
+    for item in sources:
+        key = ("html", item["sha256"]) if item["kind"] == "html" else ("file", item["relative_path"])
+        groups[key].append(item)
+    return list(groups.values())
+
+
+def extract_html_group(items):
+    """Resolve one consistent link base for exact copies, keeping alias warnings."""
+    reference = next((item for item in items if item.get("source_url")), items[0])
+    content = Path(reference["path"]).read_bytes()
+    if len(items) > 1:
+        soup = BeautifulSoup(decode_html(content)[0], "html.parser")
+        declared = soup.select_one('link[rel="canonical"][href], meta[property="og:url"][content]')
+        declared_url = (declared.get("href") or declared.get("content")) if declared else None
+        if declared_url:
+            reference = next((item for item in items if item.get("source_url")
+                              and canonical_url(item["source_url"]) == canonical_url(declared_url)), reference)
+    base = reference.get("source_url") or Path(reference["path"]).as_uri()
+    page = extract_saved_page(content, base)
+    alias_pages = {}
+    for item in items:
+        url = item.get("source_url")
+        if url and url != base and url not in alias_pages:
+            alias_pages[url] = extract_saved_page(content, url)
+    # A known valid homepage alias may be better than a saved redirect alias.
+    if page["warnings"]:
+        clean_alias = next((item for item in items if item.get("source_url") in alias_pages
+                            and not alias_pages[item["source_url"]]["warnings"]), None)
+        if clean_alias:
+            alias_pages[base] = page
+            reference = clean_alias
+            base = reference["source_url"]
+            page = alias_pages[base]
+    sources = [dict(provenance(item), warnings=alias_pages.get(item.get("source_url"), page)["warnings"])
+               for item in items]
+    sources.sort(key=lambda item: (item["relative_path"] != reference["relative_path"],
+                                   not item.get("source_url"), item["relative_path"]))
+    return page, sources, {"sha256": items[0]["sha256"], "base_source_file": reference["relative_path"],
+                           "base_url": base, "source_files": [item["relative_path"] for item in items]}
+
+
 def web_stage(output):
     sources = inventory()
     atomic_json(output / "source_inventory.json", sources)
     documents, failures, supporting = {}, [], []
-    for item in sources:
+    source_groups = group_web_sources(sources)
+    html_groups = [group for group in source_groups if group[0]["kind"] == "html"]
+    for group in source_groups:
+        item = group[0]
         if item["kind"] not in {"html", "feed", "supporting"}:
             continue
         if item["kind"] == "supporting":
@@ -251,31 +298,40 @@ def web_stage(output):
             if item["kind"] == "feed":
                 document = parse_feed(item)
             else:
-                page = extract_saved_page(Path(item["path"]).read_bytes(), item["source_url"] or Path(item["path"]).as_uri())
+                page, aliases, extraction = extract_html_group(group)
                 digest = hashlib.sha256(page["markdown"].encode("utf-8")).hexdigest()
                 # Empty files must retain distinct identities and their original error provenance.
                 identifier = "html-" + (digest if page["markdown"].strip() else item["sha256"])[:20]
                 status = "needs_review" if page["warnings"] else "parsed"
                 document = {"id": identifier, "kind": "html", "scope": "knowledge", "title": page["title"] or Path(item["path"]).stem,
                             "profile": page["profile"], "status": status, "warnings": [],
-                            "sources": [dict(provenance(item), warnings=page["warnings"])], "derived_markdown_sources": [],
+                            "sources": aliases, "derived_markdown_sources": [], "html_extractions": [extraction],
                             "links": page["links"], "embedded_sources": page["embedded_sources"], "encoding": page["encoding"],
                             "segments": [{"page_number": None, "markdown": page["markdown"], "status": status,
                                           "warnings": page["warnings"]}], "clean_html": page["html"]}
             if document["id"] in documents:
                 existing = documents[document["id"]]
                 existing["sources"].extend(document["sources"])
+                if document["kind"] == "html":
+                    existing["html_extractions"].extend(document["html_extractions"])
                 # A valid homepage alias can supply this content even if other requested URLs redirected there.
                 if document["status"] == "parsed" and existing["status"] != "parsed":
                     existing.update(status="parsed", segments=document["segments"])
             else:
                 documents[document["id"]] = document
         except Exception as error:
-            failures.append({"source": provenance(item), "status": "error", "error": f"{type(error).__name__}: {error}"})
+            failures.extend({"source": provenance(alias), "status": "error", "error": f"{type(error).__name__}: {error}"}
+                            for alias in group)
     for document in documents.values():
         write_document(document, output)
     atomic_json(output / "web_stage.json", {"documents": [document["id"] for document in documents.values()],
-                                            "failures": failures, "supporting": supporting})
+                                            "failures": failures, "supporting": supporting,
+                                            "html_deduplication": {
+                                                "method": "source_sha256_then_clean_markdown_sha256",
+                                                "source_files": sum(len(group) for group in html_groups),
+                                                "unique_source_bytes": len(html_groups),
+                                                "byte_duplicate_groups": sum(len(group) > 1 for group in html_groups),
+                                                "duplicate_copies": sum(len(group) - 1 for group in html_groups)}})
     print(f"Web/feed documents: {len(documents)}; extraction errors: {len(failures)}; supporting sources: {len(supporting)}", flush=True)
     return sources
 
@@ -505,7 +561,8 @@ def finalize(output, allow_partial=False):
                   "references": sum(len(query["relevant_docs"]) for query in evaluation),
                   "unresolved": sum(len(query["unresolved_relevant_docs"]) for query in evaluation)},
               "query_expansion_abbreviations": len(glossary["abbreviations"]),
-              "unaccounted_files": [item["relative_path"] for item in accounted if item["action"] == "unaccounted"]}
+              "unaccounted_files": [item["relative_path"] for item in accounted if item["action"] == "unaccounted"],
+              "html_deduplication": stage.get("html_deduplication")}
     atomic_json(output / "report.json", report)
     readme(output, report)
     print(json.dumps({"counts": dict(counts), "source_actions": report["source_actions"], "failures": len(failures)}, indent=2), flush=True)
@@ -558,6 +615,8 @@ UTF-8 throughout. A document has `id`, `kind`, `scope`, `title`, `profile`, `sta
 Each PDF segment represents one original page, numbered from 1. HTML/feed segments have `page_number: null`.
 Internal PDF link target pages also start at 1; URLs without an internal target have `target_page: null`.
 Sources include the original path, URL and checksum; aliases preserve duplicate URLs and legacy Markdown provenance.
+Exact HTML copies share one extraction and link-resolution base before chunking; all original aliases and their warnings remain in `sources`.
+`html_extractions` records the SHA-256 groups and the mapped source URL used to resolve relative links.
 Header/footer text from PDFs is stored in `omitted_marginalia`; website navigation, menus and interface controls are removed.
 Complex tables retain HTML cells and merged spans instead of flattening into ambiguous text.
 

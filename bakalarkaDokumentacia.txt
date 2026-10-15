@@ -1,0 +1,3 @@
+#Definovanie problenu
+
+vela uradnych a informacnych systemov maju v dnesnej dobe extremne mnozstvo informaci a pristup k infurmaciam ktore potrebujeme nam moze zabrat extremne mnozstvo casu. prichodom llms sa pristup k informaciam ulahcil ale s tradeoffom presnosti informaci.

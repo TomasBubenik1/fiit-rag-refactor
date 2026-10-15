@@ -4,6 +4,7 @@ __pycache__/
 
 # Supplied corpus, generated documents, indexes, logs and model artifacts.
 /data/
+/data-*.zip
 *.py[cod]
 *.log
 

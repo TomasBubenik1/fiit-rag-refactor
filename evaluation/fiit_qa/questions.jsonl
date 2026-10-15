@@ -1,0 +1,120 @@
+{"id": "fiit-qa-0001", "query": "Kedy sa začína a končí výučba v letnom semestri 2025/26?", "language": "sk", "split": "dev"}
+{"id": "fiit-qa-0002", "query": "Od kedy do kedy je skúškové obdobie v letnom semestri 2025/26?", "language": "sk", "split": "dev"}
+{"id": "fiit-qa-0003", "query": "Kedy sú letné prázdniny podľa harmonogramu 2025/26?", "language": "sk", "split": "dev"}
+{"id": "fiit-qa-0004", "query": "Aký dátum začiatku akademického roka 2026/27 uvádza spresnenie harmonogramu zo 6. februára 2026?", "language": "sk", "split": "dev"}
+{"id": "fiit-qa-0005", "query": "Kedy sa v letnom semestri 2025/26 zverejňujú zadania BP a kedy sa končí ich prideľovanie?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0006", "query": "Dokedy presne treba odovzdat BP2 v LS 2025/26?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0007", "query": "V akých dňoch sú obhajoby BP2 v letnom semestri 2025/26?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0008", "query": "Aký je termín odovzdania DP1 v letnom semestri 2025/26 vrátane času?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0009", "query": "Kedy sa odovzdáva DP2 v letnom semestri 2025/26?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0010", "query": "Kedy sú obhajoby DP2 v letnom semestri 2025/26?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0011", "query": "Dokedy treba odovzdať DP3 v letnom semestri 2025/26?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0012", "query": "Na aké dni sú naplánované obhajoby DP3 v letnom semestri 2025/26?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0013", "query": "Kedy sú bakalárske promócie v júni 2026 podľa harmonogramu 2025/26?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0014", "query": "Kedy sú inžinierske promócie v júni 2026 podľa harmonogramu 2025/26?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0015", "query": "Kedy sa zverejnia rozvrhové akcie na ZS 2026/27 a kedy sa na ne prihlasuje?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0016", "query": "Na ktorý dátum je určená online registrácia predmetov na akademický rok 2026/27?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0017", "query": "V utorok 12. mája 2026 mám ísť na utorkovú výučbu podľa spresnenia harmonogramu LS 2025/26?", "language": "sk", "split": "dev"}
+{"id": "fiit-qa-0018", "query": "O koľko dní neskôr sa v LS 2025/26 odovzdáva DP2 než BP2 a je čas odovzdania rovnaký?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0019", "query": "Akú formu, dĺžku a jazyk má program B-INFO v prijímacom konaní na rok 2026/27?", "language": "sk", "split": "dev"}
+{"id": "fiit-qa-0020", "query": "Dokedy mozem podat prihlasku na B-INFO v slovencine na rok 2026/27?", "language": "sk", "split": "dev"}
+{"id": "fiit-qa-0021", "query": "Kedy sa spúšťa e-prihláška na bakalársky program B-INFO na rok 2026/27 a v akom systéme?", "language": "sk", "split": "dev"}
+{"id": "fiit-qa-0022", "query": "Aký poplatok za prijímacie konanie na B-INFO v slovenčine v roku 2026/27 uvádza uložená stránka?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0023", "query": "Aký minimálny percentil z externej maturity z matematiky uvádzajú podmienky prijatia na B-INFO v roku 2026/27?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0024", "query": "Je prijímacia skúška na B-INFO 2026/27 povinná aj vtedy, ak spĺňam podmienky prijatia v inej kategórii?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0025", "query": "Maturujem v roku 2026 na Slovensku. Stačí pri prihláške na B-INFO, že ministerstvo pošle výsledky maturity?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0026", "query": "Koľko uchádzačov plánuje FIIT prijať na trojročnú a štvorročnú Informatiku v slovenčine v roku 2026/27?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0027", "query": "Bude prijímacia skúška z matematiky a informatiky pre rok 2026/27 online?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0028", "query": "Môžem skúsiť oba termíny bakalárskej prijímacej skúšky v roku 2026 a ktorý výsledok sa započíta?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0029", "query": "Keď na prijímačkách na rok 2026/27 riešim matematiku aj informatiku, môžem získať spolu 200 bodov?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0030", "query": "Vyžadujú informatické okruhy bakalárskej prijímacej skúšky 2026/27 konkrétny programovací jazyk?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0031", "query": "Kde a dokedy sa zverejnia výsledky prijímacieho konania na B-INFO pre rok 2026/27 po rozhodnutí komisie?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0032", "query": "Prečo mi FIIT odporúča robiť prijímaciu skúšku 2026/27, aj keď už mám body na prijatie?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0033", "query": "Ktoré inžinierske študijné programy ponúka prijímacie konanie FIIT na rok 2026/27?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0034", "query": "Od čoho závisí, či bude inžinierske štúdium na FIIT podľa podmienok 2026/27 dvojročné alebo trojročné?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0035", "query": "Dokedy je prihlaska na inzinierske studium FIIT na rok 2026/27?", "language": "sk", "split": "dev"}
+{"id": "fiit-qa-0036", "query": "Kedy sa otvára elektronická prihláška na inžinierske štúdium FIIT na rok 2026/27?", "language": "sk", "split": "dev"}
+{"id": "fiit-qa-0037", "query": "Aký je poplatok za inžinierske prijímacie konanie FIIT 2026/27 a ako sa uhrádza?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0038", "query": "Kedy a akou formou je prijímacia skúška na inžinierske štúdium FIIT pre rok 2026/27?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0039", "query": "Končím bakalára na FIIT v roku 2025/26. Musím robiť prijímačky na inžinierske štúdium 2026/27?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0040", "query": "Aké sú plánované počty prijatých na dvojročné a trojročné programy IB a ISS na FIIT v roku 2026/27?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0041", "query": "Ako mám na prihláške na inžinierske štúdium 2026/27 uviesť viac programov, o ktoré mám záujem?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0042", "query": "Kedy vyhodnotí prijímacia komisia výsledky inžinierskej prijímacej skúšky FIIT na rok 2026/27?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0043", "query": "Kolko kreditov ma APC_B podla katalogu 2025/26?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0044", "query": "Aký je celý názov predmetu APC_B v katalógu FIIT 2025/26?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0045", "query": "Kto je garantom APC_B podľa katalógu FIIT 2025/26?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0046", "query": "Aký podiel na hodnotení APC_B majú zadania a skúška v katalógu 2025/26?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0047", "query": "Dá sa podľa katalógu 2025/26 zapísať APC_B súbežne s VAVJS_B alebo po úspešnom absolvovaní VAVJS_B?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0048", "query": "V ktorom semestri 2025/26 je DBS_B a za koľko kreditov?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0049", "query": "Kto garantuje Databázové systémy DBS_B v katalógu 2025/26?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0050", "query": "Ako sa v katalógu 2025/26 delí záverečné hodnotenie DBS_B medzi projekt a písomný test?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0051", "query": "Kto je garantom Inteligentnej analýzy údajov IAU_B v katalógu 2025/26?", "language": "sk", "split": "dev"}
+{"id": "fiit-qa-0052", "query": "S akým programovacím jazykom začína osnova IAU_B v katalógu 2025/26?", "language": "sk", "split": "dev"}
+{"id": "fiit-qa-0053", "query": "Má IAU_B v katalógu 2025/26 uvedené podmieňujúce predmety?", "language": "sk", "split": "dev"}
+{"id": "fiit-qa-0054", "query": "Aký programovací jazyk sa preberá v OOP_B podľa cieľa predmetu v katalógu 2025/26?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0055", "query": "Je podľa katalógu 2025/26 na OOP_B povinná účasť iba na cvičeniach?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0056", "query": "Porovnaj semester a počet kreditov APC_B a DBS_B v katalógu FIIT 2025/26.", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0057", "query": "Kde si registrujem záujem o bakalárske projekty a koľko ich môžem mať zaregistrovaných naraz?", "language": "sk", "split": "dev"}
+{"id": "fiit-qa-0058", "query": "Kto navrhuje a kto potvrdzuje pridelenie zadania bakalárskeho projektu v Yonbane?", "language": "sk", "split": "dev"}
+{"id": "fiit-qa-0059", "query": "Musim pri BP1 odovzdat aj vytlacenu spravu a kam ide elektronicka verzia?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0060", "query": "Aký približný podiel má zimnosemestrálne hodnotenie BP1 na celkovom hodnotení bakalárskeho projektu v lete?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0061", "query": "Stačí na získanie kreditov z BP2 len odovzdať bakalársku prácu?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0062", "query": "Ako dlho má trvať prezentácia bakalárskej práce pri obhajobe podľa uložených pokynov?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0063", "query": "Má sa pri samotnej obhajobe bakalárskej práce predvádzať výsledný softvér alebo hardvér?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0064", "query": "Aký rozsah majú mať technický abstrakt a laický súhrn bakalárskej práce?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0065", "query": "Čo podľa pokynov potrebujem, ak chcem celú bakalársku prácu napísať po anglicky?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0066", "query": "Akú orientačnú váhu má Výstup riešenia v posudku oponenta a v posudku vedúceho BP2?", "language": "sk", "split": "dev"}
+{"id": "fiit-qa-0067", "query": "Aké štyri typy mobilít Erasmus+ uvádza uložená stránka FIIT?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0068", "query": "Kedy najskôr sa môže bakalár FIIT prihlásiť na Erasmus+ študijnú mobilitu?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0069", "query": "Kolko ECTS minimalne musim ziskat na zahranicnej univerzite pocas Erasmus+ pobytu podla pokynov FIIT?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0070", "query": "Môžem si podľa pokynov FIIT počas Erasmus+ pobytu vykázať zahraničné kredity len za prácu na BP alebo DP?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0071", "query": "Kde v AIS nájdem ponúkané univerzity na Erasmus+ a s kým musím výber konzultovať?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0072", "query": "Dokedy a cez čo môžem meniť Learning Agreement po začiatku Erasmus+ mobility?", "language": "sk", "split": "dev"}
+{"id": "fiit-qa-0073", "query": "Aké doklady si mám po Erasmus+ mobilite vyžiadať od zahraničnej univerzity a čo urobiť pre uznanie predmetov?", "language": "sk", "split": "dev"}
+{"id": "fiit-qa-0074", "query": "Ktoré štyri dokumenty sa podľa postupu FIIT odovzdávajú na študijné oddelenie po podaní Erasmus+ prihlášky v AIS?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0075", "query": "Ako sa podľa FAQ FIIT podáva žiadosť o ubytovanie na internáte?", "language": "sk", "split": "dev"}
+{"id": "fiit-qa-0076", "query": "Ako nastupujúci prvák nemám termín žiadosti o internát časovo obmedzený. Znamená to, že je jedno, kedy ju podám?", "language": "sk", "split": "dev"}
+{"id": "fiit-qa-0077", "query": "Mám ako nastupujúci prvák automaticky vyššiu šancu na internát FIIT, keď bývam veľmi ďaleko?", "language": "sk", "split": "dev"}
+{"id": "fiit-qa-0078", "query": "Podľa čoho sa pri schvaľovaní ubytovania FIIT líši poradovník prvákov a pokračujúcich študentov?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0079", "query": "Za aké obdobie sa podľa FAQ FIIT posudzujú aktivity pre dodatočné body na ubytovanie?", "language": "sk", "split": "dev"}
+{"id": "fiit-qa-0080", "query": "Podal som si žiadosť o internát, ale nejde mi rezervovať izba. Na čo mám podľa FAQ FIIT počkať?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0081", "query": "Ak nedostanem internát do začiatku zimného semestra, ako si podľa FAQ FIIT udržím záujem aj počas semestra?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0082", "query": "Čo podľa FAQ FIIT nastane, ak platba za internát nie je pripísaná do určeného dátumu?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0083", "query": "Aké úradné hodiny má študijné oddelenie FIIT počas akademického roka podľa uloženého bežného rozpisu?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0084", "query": "Na ktorom podlaží FIIT je študijné oddelenie?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0085", "query": "Ktorá pracovníčka študijného oddelenia má v uloženej kontaktnej stránke agendu Erasmus+ a ubytovania?", "language": "sk", "split": "dev"}
+{"id": "fiit-qa-0086", "query": "Kde je podľa kontaktnej stránky Slovenská informatická knižnica na FIIT?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0087", "query": "Aké otváracie hodiny knižnice SIK uvádza uložená kontaktná stránka cez týždeň a cez víkend?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0088", "query": "Čo znamená SIK, môžu ju využívať aj ľudia mimo fakulty a v akej miestnosti sídli?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0089", "query": "Môžem podľa uloženého prehľadu štipendií FIIT dostať sociálne štipendium spätne za mesiace pred podaním žiadosti?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0090", "query": "Ako často a do ktorého dňa sa podľa uloženého prehľadu FIIT vypláca sociálne štipendium?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0091", "query": "Aký najvyšší VŠP pripúšťa prehľad FIIT pri motivačnom prospechovom štipendiu Bc./Ing. a týka sa aj prvákov?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0092", "query": "Pre koľko percent študentov najviac sú podľa prehľadu FIIT určené motivačné prospechové štipendiá a štipendiá za mimoriadne výsledky spolu?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0093", "query": "Na ktorú stránku odkazuje prehľad FIIT pre aktuálne školné a poplatky spojené so štúdiom?", "language": "sk", "split": "dev"}
+{"id": "fiit-qa-0094", "query": "Kedy prebiehal elektronický zápis do ďalších ročníkov Bc. a Ing. na rok 2025/26 podľa stránky Administrácia zápisov?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0095", "query": "Umožňuje postup na uloženej stránke E-zápis zapísať sa cez AIS do prvého ročníka Bc. alebo Ing.?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0096", "query": "Aká je základná cena nového nehybridného preukazu ISIC v tabuľke pre akademický rok 2025/2026?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0097", "query": "Aká je základná cena nového nehybridného preukazu ISIC v tabuľke pre akademický rok 2026/2027?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0098", "query": "O koľko sa podľa tabuľky zmenila základná cena nehybridného ISIC medzi rokmi 2025/2026 a 2026/2027?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0099", "query": "Je na samotný ISIC aj na dopravné funkcionality TransCard rovnaký vekový limit podľa uloženej stránky Preukazy STU?", "language": "sk", "split": "dev"}
+{"id": "fiit-qa-0100", "query": "Komu mám podľa FAQ Preukazy STU hlásiť dvojitú platbu alebo platbu s nesprávnym variabilným symbolom?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0101", "query": "Kedy mám skúšku z matiky?", "language": "sk", "split": "dev"}
+{"id": "fiit-qa-0102", "query": "Dokedy mám odovzdať DP?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0103", "query": "Kolko kreditov ma tento predmet?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0104", "query": "Kedy a kde mám byť na zápise?", "language": "sk", "split": "dev"}
+{"id": "fiit-qa-0105", "query": "Dokedy poslať prihlášku na FIIT?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0106", "query": "Koľko stojí preukaz?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0107", "query": "Koľko dostanem štipendium?", "language": "sk", "split": "dev"}
+{"id": "fiit-qa-0108", "query": "Kedy je koniec semestra?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0109", "query": "Koľko rokov trvá štúdium na FIIT?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0110", "query": "Na koho na študijnom sa mám obrátiť?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0111", "query": "Akú známku som tento semester dostal z DBS?", "language": "sk", "split": "dev"}
+{"id": "fiit-qa-0112", "query": "Koľko voľných izieb na Mladosti je práve teraz?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0113", "query": "Som práve teraz prijatý na FIIT? Pozri stav mojej prihlášky.", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0114", "query": "Čo presne bude zajtra na obed v jedálni FIIT?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0115", "query": "Na akom mieste v poradovníku na internát som práve teraz ja?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0116", "query": "Aké je moje aktuálne heslo do AIS?", "language": "sk", "split": "dev"}
+{"id": "fiit-qa-0117", "query": "Kedy presne sa bude odovzdávať BP2 v letnom semestri 2031/32?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0118", "query": "V ktorej miestnosti bude skúška DBS_B 19. februára 2032?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0119", "query": "Koľko ľudí je práve teraz fyzicky v knižnici SIK?", "language": "sk", "split": "test"}
+{"id": "fiit-qa-0120", "query": "Bude zajtra ráno pred budovou FIIT pršať?", "language": "sk", "split": "test"}

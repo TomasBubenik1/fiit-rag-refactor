@@ -75,7 +75,33 @@ scores are similarity scores. The corpus contains historical editions; a year
 in a query does not enforce a year filter. See [the embedding guide](embeddings/README.md)
 for hardware settings, output formats and observed retrieval limitations.
 
+## FIIT question evaluation dataset
+
+The planned models, retrieval variants and evaluation protocol are listed in
+the Slovak [experiment plan](docs/plan_experimentov.md).
+
+[`evaluation/fiit_qa/`](evaluation/fiit_qa/README.md) contains 120 Slovak questions:
+100 with reference answers and exact source evidence, 10 requiring clarification
+and 10 unanswerable from the saved public corpus. It includes 30 development and
+90 test questions, a questions-only JSONL export and a readable answer overview.
+Annotations are assistant-curated against the local snapshot and still require
+independent expert review. Validate provenance and score saved retrieval results:
+
+```powershell
+.\.venv\Scripts\python.exe tools/validate_qa_dataset.py
+.\.venv\Scripts\python.exe tools/evaluate_qa_retrieval.py data/qa_predictions.jsonl --split test --top-k 5
+```
+
+See the [dataset guide](evaluation/fiit_qa/README.md) for the prediction format,
+metrics, split policy and limitations. Original evaluation files remain unchanged.
+
 ## Tests
+
+Run the self-contained QA dataset integrity and retrieval scoring tests:
+
+```powershell
+.\.venv\Scripts\python.exe -m unittest discover -s tests -p test_qa_dataset.py -v
+```
 
 Run the self-contained tokenizer-budget chunking tests:
 

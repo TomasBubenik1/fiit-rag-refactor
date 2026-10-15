@@ -1,16 +1,68 @@
 """Regression checks against the supplied HTML templates and chunk boundaries."""
 
 from pathlib import Path
+import hashlib
+import json
+import tempfile
 import unittest
+from unittest.mock import patch
 
 from chunking.block_aware import chunk_segment
 from tools.extract_main_content import extract_saved_page
-from tools.normalize_dataset import canonical_url, decode_json_stream, normalize_image_paths
+from tools.normalize_dataset import canonical_url, decode_json_stream, extract_html_group, normalize_image_paths, web_stage
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
 class DatasetNormalizationTests(unittest.TestCase):
+    def test_exact_html_copies_share_one_document_and_keep_known_source_url(self):
+        canonical = "https://example.org/programs/final.html"
+        content = (f'<html><head><meta property="og:url" content="{canonical}"></head>'
+                   '<body><h1>Finale 2025</h1><p><a href="guide.pdf">Guide</a></p></body></html>').encode()
+        with tempfile.TemporaryDirectory() as directory:
+            directory = Path(directory)
+            items = []
+            for name, raw, url in [("final(1).html", content, None),
+                                   ("alias.html", content, "https://example.org/other/alias.html"),
+                                   ("final.html", content, canonical),
+                                   ("final(2).html", content.replace(b"2025", b"2026"), canonical + "?year=2026")]:
+                path = directory / name
+                path.write_bytes(raw)
+                items.append({"path": str(path), "relative_path": "raw_html/" + name, "kind": "html",
+                              "sha256": hashlib.sha256(raw).hexdigest(), "source_url": url,
+                              "canonical_url": canonical_url(url)})
+            output = directory / "normalized"
+            with patch("tools.normalize_dataset.inventory", return_value=items):
+                web_stage(output)
+            stage = json.loads((output / "web_stage.json").read_text(encoding="utf-8"))
+            self.assertEqual(len(stage["documents"]), 2)
+            self.assertEqual(stage["failures"], [])
+            docs = [json.loads(path.read_text(encoding="utf-8")) for path in (output / "documents").glob("*.json")]
+            shared = next(doc for doc in docs if len(doc["sources"]) == 3)
+            self.assertIn("https://example.org/programs/guide.pdf", shared["segments"][0]["markdown"])
+            self.assertNotIn("https://example.org/other/guide.pdf", shared["segments"][0]["markdown"])
+            self.assertEqual({source["relative_path"] for source in shared["sources"]},
+                             {"raw_html/final(1).html", "raw_html/final.html", "raw_html/alias.html"})
+            self.assertIsNone(next(source for source in shared["sources"] if "(1)" in source["relative_path"])["source_url"])
+            self.assertTrue(all(chunk["source_url"] == canonical
+                                for chunk in chunk_segment(shared["segments"][0], shared)))
+            self.assertEqual((directory / "final(1).html").read_bytes(), content)
+            self.assertEqual(stage["html_deduplication"]["duplicate_copies"], 2)
+
+    def test_html_byte_deduplication_keeps_saved_homepage_alias_warnings(self):
+        content = (ROOT / "data/raw_html/index.html").read_bytes()
+        digest = hashlib.sha256(content).hexdigest()
+        items = [{"path": str(ROOT / "data/raw_html/index.html"), "relative_path": "raw_html/" + name,
+                  "sha256": digest, "source_url": url, "canonical_url": canonical_url(url)}
+                 for name, url in [("missing.html", "https://www.fiit.stuba.sk/missing.html"),
+                                   ("index.html", "https://www.fiit.stuba.sk/")]]
+        page, sources, extraction = extract_html_group(items)
+        self.assertNotIn("saved_homepage_instead_of_requested_page", page["warnings"])
+        self.assertIn("saved_homepage_instead_of_requested_page",
+                      next(source for source in sources if source["relative_path"].endswith("missing.html"))["warnings"])
+        self.assertEqual(extraction["base_url"], "https://www.fiit.stuba.sk/")
+        self.assertEqual(sources[0]["source_url"], "https://www.fiit.stuba.sk/")
+
     def page(self, name, url=None):
         return extract_saved_page((ROOT / "data/raw_html" / name).read_bytes(),
                                   url or "https://www.fiit.stuba.sk/" + name)

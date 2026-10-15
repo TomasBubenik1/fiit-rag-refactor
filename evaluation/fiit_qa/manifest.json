@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "dataset_name": "fiit-qa-sk-v1",
+  "created_on": "2026-10-15",
+  "language": "sk",
+  "total_questions": 120,
+  "annotation_method": "Assistant-authored after local corpus inspection; exact source excerpts checked programmatically; no independent human review.",
+  "evaluation_scope": "Answers grounded in the supplied local FIIT snapshot; no live website verification.",
+  "counts": {
+    "answerability": {
+      "answerable": 100,
+      "needs_clarification": 10,
+      "unanswerable": 10
+    },
+    "category": {
+      "harmonogram": 21,
+      "prijimanie_bc": 16,
+      "prijimanie_ing": 11,
+      "predmety": 17,
+      "zaverecne_prace": 11,
+      "erasmus": 8,
+      "ubytovanie": 10,
+      "sluzby": 10,
+      "stipendia": 6,
+      "zapis_preukazy": 9,
+      "mimo_domeny": 1
+    },
+    "type": {
+      "factual": 76,
+      "comparison": 4,
+      "procedural": 17,
+      "multi_source": 3,
+      "needs_clarification": 10,
+      "unanswerable": 10
+    },
+    "difficulty": {
+      "easy": 72,
+      "medium": 23,
+      "hard": 25
+    },
+    "query_style": {
+      "standard": 87,
+      "no_diacritics": 6,
+      "false_premise": 7,
+      "colloquial": 20
+    },
+    "split": {
+      "dev": 30,
+      "test": 90
+    }
+  },
+  "unique_evidence_documents": 19,
+  "unique_evidence_chunks": 47,
+  "support_groups": 64,
+  "corpus_snapshot": {
+    "ready_chunks": {
+      "path": "data/normalized/chunks.ready.jsonl",
+      "sha256": "85681321584791b31744fb3b1e2db30209c81c05df7b124ddb49dd4052bd227a",
+      "count": 9580
+    },
+    "corpus": {
+      "path": "data/normalized/corpus.jsonl",
+      "sha256": "b1658c8d46d1bdcffa53721ff75fe81fb379bf09cd270f0ae4d35e18fc9cf8e3"
+    },
+    "report": {
+      "path": "data/normalized/report.json",
+      "sha256": "150d2881a2ba596e8eee75e51ae9c92741520d1c2bd8983480afacf329807a51"
+    },
+    "counts": {
+      "documents": 2214,
+      "feed_documents": 2,
+      "knowledge_documents": 2209,
+      "source_aliases": 2388,
+      "segments": 11901,
+      "ocr_pages": 2013,
+      "review_segments": 5398,
+      "ready_chunks": 9580,
+      "oversized_chunks": 104,
+      "html_documents": 964,
+      "review_chunks": 7942,
+      "markdown_documents": 1,
+      "pdf_documents": 1247,
+      "supporting_documents": 5,
+      "supporting_chunks": 5
+    }
+  },
+  "exclusions": [
+    "Review chunks, OCR warnings and supporting analytics are excluded from positive evidence.",
+    "Original 30-question evaluation and original corpus files are unchanged."
+  ],
+  "split_policy": "30 dev / 90 test, selected for topic coverage (dev: 25 answerable, 3 clarification, 2 unavailable). Connected evidence chunks and their exact HTML aliases stay in one split. Distinct chunks from the same document may occur in both; not a document-disjoint split or random sample.",
+  "retrieval_labels": "Known sufficient source sets, not exhaustive relevance judgments. Match any alternative per support set. Non-answerable questions have no retrieval qrels.",
+  "limitations": [
+    "No independent FIIT expert review.",
+    "Exact quote validation proves provenance, not semantic correctness.",
+    "A static snapshot cannot establish current validity or live/personal data.",
+    "Coverage is selected student-facing topics, not every document.",
+    "No embedding index is present in this workspace, so model retrieval/answer quality has not been measured."
+  ],
+  "artifacts": {
+    "dataset.jsonl": {
+      "sha256": "abced06913dd0c106288563a4eb78229cd0f855e5a71fcae393d3acd698b8c13",
+      "records": 120
+    },
+    "questions.jsonl": {
+      "sha256": "0df24d6ee11fdde2ba1aa56c4b4ea121f48315e4fad2d654097c64e0e68e7924",
+      "records": 120
+    },
+    "PREHLAD.md": {
+      "sha256": "ff4bee903c5cfde33ab5c34ad694950a52cea416b6318c34bf5b4f67539342a7",
+      "records": null
+    }
+  }
+}
